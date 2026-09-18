@@ -1,4 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 /**
@@ -47,4 +50,22 @@ public class ChoiceTest {
         Choice choice = new Choice("menu text test", "result text test", 20, 25);
         assertEquals(choice.getDistanceReduction(), 25);
     }  
+
+    // ----------------------------------------------------------
+    /**
+     * test equals()
+     */
+    @Test
+    public void testEquals() {
+        Choice choice = new Choice("menu text test", "result text test", 20, 25);
+        assertTrue(choice.equals(choice));
+        assertFalse(choice.equals(null));
+        assertFalse(choice.equals("choice2"));
+        assertTrue(choice.equals(new Choice("menu text test", "result text test", 20, 25)));
+        assertFalse(choice.equals( new Choice("not menu text test", "result text test", 20, 25)));
+        assertFalse(choice.equals( new Choice("menu text test", "not result text test", 20, 25)));
+        assertFalse(choice.equals( new Choice("menu text test", "result text test", 25, 25)));
+        assertFalse(choice.equals( new Choice("menu text test", "result text test", 20, 20)));
+
+    }
 }

@@ -78,4 +78,39 @@ public class Choice
     {
         return distanceReduction;
     }
+
+    // ----------------------------------------------------------
+    /**
+     * Determines if two objects are equal. Two choices are equal if they have
+     * the menu text, result text, time cost, and distance reduction.
+     *
+     * @return Returns true if objects are equal.
+     * @param other
+     *            The object to compare this to.
+     */
+    @Override
+    public boolean equals(Object other)
+    {
+        if (other == this)
+        {
+            return true;
+        }
+        if (other == null)
+        {
+            return false;
+        }
+        if (this.getClass() == other.getClass())
+        {
+            Choice choice2 = (Choice)other;
+            return (
+                this.getMenuText().equals(choice2.getMenuText()) && 
+                this.getResultText().equals(choice2.getResultText()) && 
+                this.getTimeCost() == choice2.getTimeCost() && 
+                this.getDistanceReduction() == choice2.getDistanceReduction());
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
