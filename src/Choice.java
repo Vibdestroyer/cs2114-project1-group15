@@ -7,8 +7,7 @@
  * @version 2026.09.18
  */
 
-public class Choice
-{
+public class Choice {
     private String menuText;
     private String resultText;
     private int timeCost;
@@ -21,19 +20,23 @@ public class Choice
      * @param menuText
      *            The text to be displayed as the option in the menu.
      * @param resultText
-     *             The text to be displayed after the option was selected.
+     *            The text to be displayed after the option was selected.
      * @param timeCost
-     *             The amount of time that the option will take.
+     *            The amount of time that the option will take.
      * @param distanceReduction
-     *             The distance that will be covered by taking this option.
+     *            The distance that will be covered by taking this option.
      */
-    public Choice(String menuText, String resultText, int timeCost, int distanceReduction) 
-    {
+    public Choice(
+        String menuText,
+        String resultText,
+        int timeCost,
+        int distanceReduction) {
         this.menuText = menuText;
         this.resultText = resultText;
         this.timeCost = timeCost;
         this.distanceReduction = distanceReduction;
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -41,21 +44,21 @@ public class Choice
      * 
      * @return Returns the menu text.
      */
-    public String getMenuText() 
-    {
+    public String getMenuText() {
         return menuText;
     }
-    
+
+
     // ----------------------------------------------------------
     /**
      * The text to be displayed after the option was chosen.
      * 
      * @return Returns the resulting text.
      */
-    public String getResultText() 
-    {
+    public String getResultText() {
         return resultText;
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -63,10 +66,10 @@ public class Choice
      * 
      * @return Returns the option's time cost.
      */
-    public int getTimeCost() 
-    {
+    public int getTimeCost() {
         return timeCost;
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -74,10 +77,10 @@ public class Choice
      * 
      * @return Returns the distance reduction by the option.
      */
-    public int getDistanceReduction() 
-    {
+    public int getDistanceReduction() {
         return distanceReduction;
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -89,27 +92,22 @@ public class Choice
      *            The object to compare this to.
      */
     @Override
-    public boolean equals(Object other)
-    {
-        if (other == this)
-        {
+    public boolean equals(Object other) {
+        if (other == this) {
             return true;
         }
-        if (other == null)
-        {
+        if (other == null) {
             return false;
         }
-        if (this.getClass() == other.getClass())
-        {
+        if (this.getClass() == other.getClass()) {
             Choice choice2 = (Choice)other;
-            return (
-                this.getMenuText().equals(choice2.getMenuText()) && 
-                this.getResultText().equals(choice2.getResultText()) && 
-                this.getTimeCost() == choice2.getTimeCost() && 
-                this.getDistanceReduction() == choice2.getDistanceReduction());
+            return (this.getMenuText().equals(choice2.getMenuText()) && this
+                .getResultText().equals(choice2.getResultText()) && this
+                    .getTimeCost() == choice2.getTimeCost() && this
+                        .getDistanceReduction() == choice2
+                            .getDistanceReduction());
         }
-        else
-        {
+        else {
             return false;
         }
     }

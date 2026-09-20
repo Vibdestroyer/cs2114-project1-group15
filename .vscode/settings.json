@@ -1,0 +1,23 @@
+{
+  // Points VS Code's Java formatter (via the Red Hat "Language Support for
+  // Java" extension) at the checked-in Eclipse formatter XML, and pins the
+  // exact profile name from that file. Anyone who opens this folder gets
+  // identical formatting — nothing to configure on their end beyond
+  // installing the extension.
+  "java.format.settings.url": ".vscode/eclipse-formatter.xml",
+  "java.format.settings.profile": "vt-cs-style-fixed",
+
+  // Format automatically to match the profile's expectations.
+  "editor.formatOnSave": true,
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.rulers": [80]
+  },
+
+  // Mirrors a few of the profile's line-wrap / import settings so the
+  // "Organize Imports" and save actions line up with the Eclipse profile.
+  "java.saveActions.organizeImports": true,
+  "java.format.comments.enabled": true
+}
