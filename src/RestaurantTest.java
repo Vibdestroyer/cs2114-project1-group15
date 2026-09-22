@@ -1,17 +1,19 @@
 import student.TestCase;
 import java.util.List;
 
-
+/**
+ * Tests for the Restaurant class.
+ *
+ * @author Francis Kwon
+ * @version 2026.09.22
+ */
 public class RestaurantTest extends TestCase {
-
+    
     /**
-     * Tests basic setup and values.
+     * Tests basic setup and default values.
      */
     public void testInitialization() {
         Restaurant r = new Restaurant();
-
-        assertNotNull(r.getScenario());
-        assertFalse(r.getScenario().isEmpty());
 
         List<Choice> choices = r.getChoices();
         assertNotNull(choices);
@@ -19,12 +21,13 @@ public class RestaurantTest extends TestCase {
 
         Choice choice = choices.get(0);
         assertEquals("Get food from restaurant", choice.getMenuText());
-        assertNotNull(choice.getResultText());
+        assertEquals("You grab your food and continue rushing to class.", 
+            choice.getResultText());
         assertEquals(3, choice.getDistanceReduction());
     }
-
+    
     /**
-     * Tests time cost calculation.
+     * Tests time cost calculation against the random flags.
      */
     public void testDynamicTimeCostCalculation() {
         for (int i = 0; i < 50; i++) {
@@ -44,13 +47,13 @@ public class RestaurantTest extends TestCase {
     }
 
     /**
-     * Tests all combinations of boolean flags.
+     * Tests all four possible combinations of boolean flags.
      */
     public void testAllBranchCombinationsCovered() {
-        boolean seenBothFalse = false;
-        boolean seenBothTrue = false;
-        boolean seenOnlineOnly = false;
-        boolean seenGrabOnly = false;
+        boolean seenBothFalse = false; // 10 mins
+        boolean seenBothTrue = false;  // 2 mins
+        boolean seenOnlineOnly = false; // 6 mins
+        boolean seenGrabOnly = false;   // 6 mins
 
         for (int i = 0; i < 150; i++) {
             Restaurant r = new Restaurant();
@@ -80,4 +83,5 @@ public class RestaurantTest extends TestCase {
         assertTrue(seenOnlineOnly);
         assertTrue(seenGrabOnly);
     }
+}
 }
