@@ -84,4 +84,3 @@ public class RestaurantTest extends TestCase {
         assertTrue(seenGrabOnly);
     }
 }
-}
