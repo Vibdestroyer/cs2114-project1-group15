@@ -2,35 +2,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abstract class for a player to encounter and includes all encounter types
- * to provide the choices, which the main class will display.
+ * Abstract class representing a campus encounter that provides
+ * choices for the player.
  */
 public abstract class Encounter {
 
     /**
-     * Stores all the choices that are associated with a particular
-     * Encounter, so the program can display them to the player.
-     * The subclasses can access and modify this list.
+     * Stores choices for this encounter.
      */
     protected List<Choice> choices;
 
     /**
-     * Constructor for the class that initializes the empty list of choices
-     * for the encounter, restricted to the subclasses so they can initialize
-     * list while preventing external classes from accessing it and creating
-     * instances.
+     * Initializes an empty list of choices.
      */
     protected Encounter() {
         this.choices = new ArrayList<>();
     }
 
-
     /**
-     * Returns the list of available choices for a specific encounter.
-     * Other classes can retrieve the choices without modifying the
-     * underlying variable directly.
+     * Returns the list of choices for this encounter.
+     *
+     * @return List of choices.
      */
     public List<Choice> getChoices() {
         return this.choices;
+    }
+
+    /**
+     * Adds a choice to this encounter.
+     *
+     * @param choice Choice to add.
+     */
+    public void addChoice(Choice choice) {
+        if (choice != null) {
+            this.choices.add(choice);
+        }
     }
 }
