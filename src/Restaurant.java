@@ -1,4 +1,5 @@
 import java.util.Random;
+
 public class Restaurant extends Encounter {
   private boolean takesOnlineOrders;
   private boolean grabAndGo;
@@ -11,7 +12,7 @@ public class Restaurant extends Encounter {
     this.takesOnlineOrders = rand.nextBoolean();
     this.grabAndGo = rand.nextBoolean();
 
-    // The time cost is 10 minutes. 
+    // The time cost is 10 minutes.
     int timeChange = -10;
 
     // Reduces the time cost by 4 if they choose online orders.
@@ -30,5 +31,3 @@ public class Restaurant extends Encounter {
     this.choices.add(getFood);
   }
 }
-
-

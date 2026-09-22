@@ -5,12 +5,12 @@ public class RestaurantTest extends TestCase {
 
     private Restaurant restaurant;
 
-    // Set up. 
+    // Set up.
     public void setUp() {
         restaurant = new Restaurant();
     }
 
-    // Tests the distance and choice description. 
+    // Tests the distance and choice description.
     public void testEncounterChoiceCreation() {
         assertNotNull(restaurant.getChoices());
         assertEquals(1, restaurant.getChoices().size());
