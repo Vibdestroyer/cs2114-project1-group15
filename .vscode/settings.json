@@ -19,5 +19,6 @@
   // Mirrors a few of the profile's line-wrap / import settings so the
   // "Organize Imports" and save actions line up with the Eclipse profile.
   "java.saveActions.organizeImports": true,
-  "java.format.comments.enabled": true
+  "java.format.comments.enabled": true,
+  "java.debug.settings.onBuildFailureProceed": true
 }

@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Random;
 
 /**
  * Main is used to mainain the user's interactions with the
@@ -7,11 +11,6 @@
  * @author Sarah Gage
  * @version 2026.09.19
  */
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Random;
 
 public class User {
     private int timeRemaining;
@@ -68,26 +67,26 @@ public class User {
                     choices.add(pChoices.get(i));
                 }
             }
-            // sif (random.nextBoolean()) {
-            //     Friend f = new Friend();
-            //     List<Choice> fChoices = f.getChoices();
-            //     for (int i = 0; i < fChoices.size(); i++) {
-            //         choices.add(fChoices.get(i));
-            //     }
+            if (random.nextBoolean()) {
+                Friend f = new Friend();
+                List<Choice> fChoices = f.getChoices();
+                for (int i = 0; i < fChoices.size(); i++) {
+                    choices.add(fChoices.get(i));
+                }
+            }
+            // if (random.nextBoolean()) {
+            // Freshman f = new Freshman();
+            // List<Choice> fChoices = f.getChoices();
+            // for (int i = 0; i < fChoices.size(); i++) {
+            // choices.add(fChoices.get(i));
+            // }
             // }
             // if (random.nextBoolean()) {
-            //     Freshman f = new Freshman();
-            //     List<Choice> fChoices = f.getChoices();
-            //     for (int i = 0; i < fChoices.size(); i++) {
-            //         choices.add(fChoices.get(i));
-            //     }
+            // Club c = new Club();
+            // List<Choice> cChoices = c.getChoices();
+            // for (int i = 0; i < cChoices.size(); i++) {
+            // choices.add(cChoices.get(i));
             // }
-            // if (random.nextBoolean()) {
-            //     Club c = new Club();
-            //     List<Choice> cChoices = c.getChoices();
-            //     for (int i = 0; i < cChoices.size(); i++) {
-            //         choices.add(cChoices.get(i));
-            //     }
             // }
             if (random.nextBoolean()) {
                 Bus b = new Bus();
@@ -113,18 +112,26 @@ public class User {
         scanner.close();
 
         if (timeRemaining < 0) {
-            System.out.println("You ran out of time. You are going to be late to class.");
-        } else if (timeRemaining == 0) {
+            System.out.println(
+                "You ran out of time. You are going to be late to class.");
+        }
+        else if (timeRemaining == 0) {
             if (distanceToClass < 0) {
-                System.out.println("You made it to class with time to spare. Amazing job!");
+                System.out.println(
+                    "You made it to class with time to spare. Amazing job!");
             }
             else if (distanceToClass == 0) {
-                System.out.println("You made it to class exactly on time. Impressive!");
-            } else {
-                System.out.println("You ran out of time. You are going to be late to class.");
+                System.out.println(
+                    "You made it to class exactly on time. Impressive!");
             }
-        } else {
-            System.out.println("You made it to class with time to spare. Amazing job!");
+            else {
+                System.out.println(
+                    "You ran out of time. You are going to be late to class.");
+            }
+        }
+        else {
+            System.out.println(
+                "You made it to class with time to spare. Amazing job!");
         }
 
     }

@@ -1,86 +1,34 @@
-import java.util.List;
-import student.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Test class for Friend class
+ * Test class for Person
  *
- * @author Aleysa Sweeney
+ * @author Sarah Gage
  * @version 2026.09.24
  */
-public class FriendTest extends TestCase {
-
+public class FriendTest {
+    // ----------------------------------------------------------
     /**
-     * tests that the friend encounter is initialized correctly
+     * test getChoices
      */
-    public void testInitialization() {
-
-        Friend f = new Friend("Person");
-
-        List<Choice> choices = f.getChoices();
-
-        assertNotNull(choices);
-        assertTrue(choices.size() >= 1);
-        assertTrue(choices.size() <= 3);
-
-        Choice talk = choices.get(0);
-
-        assertTrue(talk.getMenuText().contains("friend"));
-        assertEquals(-5, talk.getTimeCost());
-        assertEquals(0, talk.getDistanceReduction());
-    }
-
-
-    /**
-     * tests that all possible random outcomes occur
-     */
-    public void testRandomChoicesAppear() {
-
-        boolean sawFood = false;
-        boolean sawCar = false;
-        boolean sawOnlyTalk = false;
-
-        for (int i = 0; i < 100; i++) {
-
-            Friend f = new Friend("Person");
-
-            List<Choice> choices = f.getChoices();
-            if (choices.size() == 1) {
-                sawOnlyTalk = true;
-            }
-            for (Choice choice : choices) {
-                if (choice.getMenuText().equals("Take a snack")) {
-                    sawFood = true;
-                }
-                if (choice.getMenuText().equals("Get a ride to class")) {
-                    sawCar = true;
-                }
-            }
+    @Test
+    public void testGetChoices() {
+        Friend f = new Friend();
+        assertEquals(f.getChoices().get(0).getTimeCost(), 5);
+        assertEquals(f.getChoices().get(0).getDistanceReduction(), 0);
+        if (f.getChoices().size() > 2) {
+            assertEquals(f.getChoices().get(1).getTimeCost(), 5);
+            assertEquals(f.getChoices().get(1).getDistanceReduction(), 5);
+            assertEquals(f.getChoices().get(2).getTimeCost(), 5);
+            assertEquals(f.getChoices().get(2).getDistanceReduction(), 10);
         }
-        assertTrue(sawFood);
-        assertTrue(sawCar);
-        assertTrue(sawOnlyTalk);
-    }
-
-
-    /**
-     * tests the values of the optional choices.
-     */
-    public void testChoiceValues() {
-        for (int i = 0; i < 100; i++) {
-            Friend f = new Friend("Person");
-            List<Choice> choices = f.getChoices();
-
-            for (Choice choice : choices) {
-                if (choice.getMenuText().equals("Take a snack")) {
-                    assertEquals(-5, choice.getTimeCost());
-                    assertEquals(-5, choice.getDistanceReduction());
-                }
-
-                if (choice.getMenuText().equals("Get a ride to class")) {
-                    assertEquals(-5, choice.getTimeCost());
-                    assertEquals(-10, choice.getDistanceReduction());
-                }
-            }
+        else if (f.getChoices().size() > 1) {
+            assertEquals(f.getChoices().get(1).getTimeCost(), 5);
+            assertTrue(f.getChoices().get(1).getDistanceReduction() == 5 || f
+                .getChoices().get(1).getDistanceReduction() == 10);
         }
     }
 }

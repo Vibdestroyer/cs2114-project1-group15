@@ -19,6 +19,7 @@ public abstract class Encounter {
         this.choices = new ArrayList<>();
     }
 
+
     /**
      * Returns the list of choices for this encounter.
      *
@@ -28,10 +29,12 @@ public abstract class Encounter {
         return this.choices;
     }
 
+
     /**
      * Adds a choice to this encounter.
      *
-     * @param choice Choice to add.
+     * @param choice
+     *            Choice to add.
      */
     public void addChoice(Choice choice) {
         if (choice != null) {

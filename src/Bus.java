@@ -17,22 +17,16 @@ public class Bus extends Encounter {
 
         if (this.peopleOnBoard >= this.maxCapacity) {
 
-            Choice waitForBus = new Choice(
-                    "Wait for another bus",
-                    "The bus is full. You wait 2 minutes.",
-                    -2,
-                    0);
+            Choice waitForBus = new Choice("Wait for another bus",
+                "The bus is full. You wait 2 minutes.", 2, 0);
 
             this.choices.add(waitForBus);
-        } else {
+        }
+        else {
 
             // There is room on the bus.
-            Choice takeBus = new Choice(
-                    "Take the bus",
-                    "You ride the bus for " + this.rideTime
-                            + " minutes.",
-                    -this.rideTime,
-                    -7);
+            Choice takeBus = new Choice("Take the bus", "You ride the bus for "
+                + this.rideTime + " minutes.", this.rideTime, 7);
 
             this.choices.add(takeBus);
         }

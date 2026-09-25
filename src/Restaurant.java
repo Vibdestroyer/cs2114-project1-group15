@@ -12,7 +12,7 @@ public class Restaurant extends Encounter {
      */
     public Restaurant() {
         super();
-        
+
         Random rand = new Random();
 
         this.takesOnlineOrders = rand.nextBoolean();
@@ -28,32 +28,14 @@ public class Restaurant extends Encounter {
         if (this.grabAndGo) {
             timeChange -= 4;
         }
-        
+
         int distanceChange = 3;
 
         String resultText = "You grab your food and continue rushing to class.";
 
-        Choice getFood = new Choice(
-            "Get food from restaurant",
-            resultText,
-            timeChange,
-            distanceChange
-        );
+        Choice getFood = new Choice("Get food from restaurant", resultText,
+            timeChange, distanceChange);
 
         this.choices.add(getFood);
-    }
-
-    /**
-     * @return Whether online orders are accepted.
-     */
-    public boolean getTakesOnlineOrders() {
-        return takesOnlineOrders;
-    }
-
-    /**
-     * @return Whether grab-and-go is available.
-     */
-    public boolean isGrabAndGo() {
-        return grabAndGo;
     }
 }
