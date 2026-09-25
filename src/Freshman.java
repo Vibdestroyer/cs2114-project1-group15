@@ -13,16 +13,18 @@ public class Freshman extends Person {
         public Freshman() {
                 super();
                 // replaces default person choice
-                Choice talk = new Choice("Talk to a freshman named " + this.getName(),
-                                "You stop and talk to " + this.getName() + " for 5 minutes and do not travel at all.",
-                                5, 0, 1);
+                Choice talk = new Choice("Talk to a freshman named " + name,
+                        "You stop and talk to " + name
+                                + " for 5 minutes and do not travel at all.", 5,
+                        0, 1);
                 this.choices.set(0, talk);
 
                 // option to help freshman
-                Choice directions = new Choice("Give directions to a lost freshman",
-                                "You helped the " + this.getName()
-                                                + " find their class which took 10 minutes and you did not travel at all.",
-                                10, 0, 2);
+                Choice directions = new Choice(
+                        "Give directions to a lost freshman", "You helped the "
+                                + name
+                                + " find their class which took 10 minutes and you did not travel at all.",
+                        10, 0, 2);
 
                 this.choices.add(directions);
 

@@ -1,11 +1,22 @@
 import java.util.Random;
 
+/**
+ * This class represents an encounter with a freshman
+ * 
+ * @author Victor Braday
+ * @version 2026.09.22
+ */
 public class Bus extends Encounter {
 
     private int peopleOnBoard;
     private int maxCapacity;
     private int rideTime;
 
+    /**
+     * creates a new freshman encounter + replaces default
+     * person choice with freshman specific
+     * conversation options.
+     */
     public Bus() {
         super();
 
@@ -18,14 +29,17 @@ public class Bus extends Encounter {
         if (this.peopleOnBoard >= this.maxCapacity) {
 
             Choice waitForBus = new Choice("Try taking the bus",
-                    "The bus is full. You wait 2 minutes and do not travel at all.", 2, 0, -2);
+                "The bus is full. You wait 2 minutes and do not travel at all.",
+                2, 0, -2);
 
             this.choices.add(waitForBus);
-        } else {
+        }
+        else {
 
             // There is room on the bus.
-            Choice takeBus = new Choice("Try taking the bus", "You find a seat! You ride the bus for "
-                    + this.rideTime + " minutes and travel 0.7 miles.", this.rideTime, 7, 2);
+            Choice takeBus = new Choice("Try taking the bus",
+                "You find a seat! You ride the bus for " + this.rideTime
+                    + " minutes and travel 0.7 miles.", this.rideTime, 7, 2);
 
             this.choices.add(takeBus);
         }

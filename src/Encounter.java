@@ -4,6 +4,10 @@ import java.util.List;
 /**
  * Abstract class representing a campus encounter that provides
  * choices for the player.
+ * 
+ * @author Francis Kwon
+ * @version 2026.09.18
+ * 
  */
 public abstract class Encounter {
 
@@ -19,6 +23,7 @@ public abstract class Encounter {
         this.choices = new ArrayList<>();
     }
 
+
     /**
      * Returns the list of choices for this encounter.
      *
@@ -28,11 +33,12 @@ public abstract class Encounter {
         return this.choices;
     }
 
+
     /**
      * Adds a choice to this encounter.
      *
      * @param choice
-     *               Choice to add.
+     *            Choice to add.
      */
     public void addChoice(Choice choice) {
         if (choice != null) {

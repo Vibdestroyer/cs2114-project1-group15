@@ -1,15 +1,25 @@
-
 import java.util.List;
 import java.util.Random;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 
+/**
+ * This class represents the user's encounter with a general person encountered
+ * while traveling to class.
+ * 
+ * @author Victor Braday
+ * @version 2026.09.22
+ * 
+ */
 public class Person extends Encounter {
 
     private List<String> names;
-    private String name;
+    protected String name;
 
+    /**
+     * Creates a new Person encounter.
+     */
     public Person() {
         super();
 
@@ -31,10 +41,5 @@ public class Person extends Encounter {
             timeChange, distanceChange, 1);
 
         this.choices.add(talk);
-    }
-
-
-    public String getName() {
-        return this.name;
     }
 }
