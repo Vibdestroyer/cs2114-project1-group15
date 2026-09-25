@@ -15,7 +15,7 @@ javac -d out src/Choice.java src/Encounter.java src/Person.java src/Friend.java 
 java -cp out User
 ```
 
-Keep `names.txt` in the project root directory so the program can load the names correctly.
+Run the project from root directory so the program can load the names correctly.
 
 ## Contributors
 
