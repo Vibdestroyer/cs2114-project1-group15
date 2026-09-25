@@ -27,6 +27,9 @@ public class User {
      * class.
      */
     public User() {
+        // Create scanner to read in user inputs
+        Scanner scanner = new Scanner(System.in);
+
         // Initalize game state
         timeRemaining = 40;
         distanceToClass = 20;
@@ -52,6 +55,10 @@ public class User {
 
         // Main game play
         while (!isDone()) {
+            // Reset choices list
+            choices.clear();
+            choices.add(baseChoice);
+
             // Create potential encounters and add their choices to the choices
             // array list
             if (random.nextBoolean()) {
@@ -61,35 +68,35 @@ public class User {
                     choices.add(pChoices.get(i));
                 }
             }
-            else if (random.nextBoolean()) {
-                Friend f = new Friend();
-                List<Choice> fChoices = f.getChoices();
-                for (int i = 0; i < fChoices.size(); i++) {
-                    choices.add(fChoices.get(i));
-                }
-            }
-            else if (random.nextBoolean()) {
-                Freshman f = new Freshman();
-                List<Choice> fChoices = f.getChoices();
-                for (int i = 0; i < fChoices.size(); i++) {
-                    choices.add(fChoices.get(i));
-                }
-            }
-            else if (random.nextBoolean()) {
-                Club c = new Club();
-                List<Choice> cChoices = c.getChoices();
-                for (int i = 0; i < cChoices.size(); i++) {
-                    choices.add(cChoices.get(i));
-                }
-            }
-            else if (random.nextBoolean()) {
+            // sif (random.nextBoolean()) {
+            //     Friend f = new Friend();
+            //     List<Choice> fChoices = f.getChoices();
+            //     for (int i = 0; i < fChoices.size(); i++) {
+            //         choices.add(fChoices.get(i));
+            //     }
+            // }
+            // if (random.nextBoolean()) {
+            //     Freshman f = new Freshman();
+            //     List<Choice> fChoices = f.getChoices();
+            //     for (int i = 0; i < fChoices.size(); i++) {
+            //         choices.add(fChoices.get(i));
+            //     }
+            // }
+            // if (random.nextBoolean()) {
+            //     Club c = new Club();
+            //     List<Choice> cChoices = c.getChoices();
+            //     for (int i = 0; i < cChoices.size(); i++) {
+            //         choices.add(cChoices.get(i));
+            //     }
+            // }
+            if (random.nextBoolean()) {
                 Bus b = new Bus();
                 List<Choice> bChoices = b.getChoices();
                 for (int i = 0; i < bChoices.size(); i++) {
                     choices.add(bChoices.get(i));
                 }
             }
-            else if (random.nextBoolean()) {
+            if (random.nextBoolean()) {
                 Restaurant r = new Restaurant();
                 List<Choice> rChoices = r.getChoices();
                 for (int i = 0; i < rChoices.size(); i++) {
@@ -100,9 +107,26 @@ public class User {
             // Allow the user to make a choice and update game state based on
             // that choice
             displayChoices();
-            Choice choice = readChoice();
+            Choice choice = readChoice(scanner);
             takeAction(choice);
         }
+        scanner.close();
+
+        if (timeRemaining < 0) {
+            System.out.println("You ran out of time. You are going to be late to class.");
+        } else if (timeRemaining == 0) {
+            if (distanceToClass < 0) {
+                System.out.println("You made it to class with time to spare. Amazing job!");
+            }
+            else if (distanceToClass == 0) {
+                System.out.println("You made it to class exactly on time. Impressive!");
+            } else {
+                System.out.println("You ran out of time. You are going to be late to class.");
+            }
+        } else {
+            System.out.println("You made it to class with time to spare. Amazing job!");
+        }
+
     }
 
 
@@ -116,7 +140,6 @@ public class User {
         if (timeRemaining <= 0 || distanceToClass <= 0) {
             return true;
         }
-
         return false;
     }
 
@@ -127,7 +150,7 @@ public class User {
      */
     public void displayChoices() {
         System.out.println("What would you like to do?");
-        for (int i = 0; i <= choices.size(); i++) {
+        for (int i = 0; i < choices.size(); i++) {
             System.out.println(menuLetters.get(i) + ") " + choices.get(i)
                 .getMenuText());
         }
@@ -141,9 +164,8 @@ public class User {
      * 
      * @return Returns the choice the user selects.
      */
-    public Choice readChoice() {
+    public Choice readChoice(Scanner scanner) {
         Boolean madeChoice = false;
-        Scanner scanner = new Scanner(System.in);
         int choiceIndex = -1;
 
         while (!madeChoice) {
@@ -162,7 +184,7 @@ public class User {
                 }
                 else {
                     char inputChar = Character.toUpperCase(inputArray[0]);
-                    if ((int)inputChar - 65 < 0 && (int)inputChar
+                    if ((int)inputChar - 65 < 0 || (int)inputChar
                         - 65 >= choices.size()) {
                         System.out.println(
                             "It looks like you entered a choice that was not available in the menu. Please enter a single letter choice that is avaible in the menu.");
@@ -174,8 +196,6 @@ public class User {
                 }
             }
         }
-
-        scanner.close();
         return choices.get(choiceIndex);
     }
 
@@ -189,7 +209,7 @@ public class User {
      *            The choice object the user selected.
      */
     public void takeAction(Choice choice) {
-        System.out.println(choice.getResultText());
+        System.out.println("\n" + choice.getResultText() + "\n");
         timeRemaining -= choice.getTimeCost();
         distanceToClass -= choice.getDistanceReduction();
 
