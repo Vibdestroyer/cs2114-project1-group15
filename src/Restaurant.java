@@ -18,23 +18,26 @@ public class Restaurant extends Encounter {
         this.takesOnlineOrders = rand.nextBoolean();
         this.grabAndGo = rand.nextBoolean();
 
+        String resultText = "You grab your food and continue rushing to class.";
+
         // Base time cost is 10 minutes
         int timeChange = 10;
 
         if (this.takesOnlineOrders) {
             timeChange -= 4;
+            resultText += " The restaurant takes online orders which saved time.";
         }
 
         if (this.grabAndGo) {
             timeChange -= 4;
+            resultText += " The restaurant served grab and go food which saved time.";
         }
 
         int distanceChange = 3;
 
-        String resultText = "You grab your food and continue rushing to class.";
-
-        Choice getFood = new Choice("Get food from restaurant", resultText,
-                timeChange, distanceChange);
+        Choice getFood = new Choice("Get food from restaurant",
+                resultText + " This took " + timeChange + " minutes and gave you the energy to travel 0.3 miles.",
+                timeChange, distanceChange, 2);
 
         this.choices.add(getFood);
     }

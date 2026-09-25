@@ -19,6 +19,6 @@ public class FreshmanTest {
         assertEquals(f.getChoices().get(0).getTimeCost(), 5);
         assertEquals(f.getChoices().get(0).getDistanceReduction(), 0);
         assertEquals(f.getChoices().get(1),
-                new Choice("Give directions", "You helped the freshman find their class", 10, 0));
+                new Choice("Give directions", "You helped the freshman find their class", 10, 0, 2));
     }
 }

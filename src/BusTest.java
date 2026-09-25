@@ -21,7 +21,7 @@ public class BusTest {
         Bus b = new Bus();
         List<Choice> c1 = new ArrayList<>();
         c1.add(new Choice("Wait for another bus",
-                "The bus is full. You wait 2 minutes.", 2, 0));
+                "The bus is full. You wait 2 minutes.", 2, 0, -2));
         assertTrue(b.getChoices().equals(c1) || b.getChoices().get(0)
                 .getDistanceReduction() == 7);
     }

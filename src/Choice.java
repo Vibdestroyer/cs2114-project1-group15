@@ -12,6 +12,7 @@ public class Choice {
     private String resultText;
     private int timeCost;
     private int distanceReduction;
+    private int happinessEffect;
 
     // ----------------------------------------------------------
     /**
@@ -27,16 +28,21 @@ public class Choice {
      * @param distanceReduction
      *                          The distance that will be covered by taking this
      *                          option.
+     * @param happinessEffect
+     *                          The change that will be seen in happiness by taking
+     *                          this option.
      */
     public Choice(
             String menuText,
             String resultText,
             int timeCost,
-            int distanceReduction) {
+            int distanceReduction,
+            int happinessEffect) {
         this.menuText = menuText;
         this.resultText = resultText;
         this.timeCost = timeCost;
         this.distanceReduction = distanceReduction;
+        this.happinessEffect = happinessEffect;
     }
 
     // ----------------------------------------------------------
@@ -81,8 +87,19 @@ public class Choice {
 
     // ----------------------------------------------------------
     /**
+     * The effect the option will have on happiness.
+     * 
+     * @return Returns how happiness will change by the option.
+     */
+    public int getHappinessEffect() {
+        return happinessEffect;
+    }
+
+    // ----------------------------------------------------------
+    /**
      * Determines if two objects are equal. Two choices are equal if they have
-     * the menu text, result text, time cost, and distance reduction.
+     * the menu text, result text, time cost, and distance reduction. The happiness
+     * effect is irrelevant.
      *
      * @return Returns true if objects are equal.
      * @param other

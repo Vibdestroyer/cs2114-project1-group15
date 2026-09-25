@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /**
- * This class Represents an encounter with
+ * This class represents an encounter with
  * a club booth and its members
  * 
  * @author Aleysa Sweeney
@@ -24,17 +24,22 @@ public class Club extends Person {
         Random rand = new Random();
         this.numberOfPeople = rand.nextInt(10) + 1;
         this.hasEnergyDrinks = rand.nextBoolean();
+        Choice talk;
 
-        int distanceReduction = 0;
         // energy drinks provide distance boost
         if (this.hasEnergyDrinks) {
-            distanceReduction = 3;
-
+            // replace default person conversation choice
+            talk = new Choice("Talk to club members at a booth", "You stop and talk to "
+                    + this.numberOfPeople + " club members for " + this.numberOfPeople
+                    + " minutes. They gave you a free energy drink which allowed you to quickly travel 0.3 miles.",
+                    this.numberOfPeople, 3, 2);
+        } else {
+            // replace default person conversation choice
+            talk = new Choice("Talk to club members at a booth", "You stop and talk to "
+                    + this.numberOfPeople + " club members for " + this.numberOfPeople
+                    + " minutes and do not travel anywhere.", this.numberOfPeople,
+                    0, 1);
         }
-        // replace default person conversation choice
-        Choice talk = new Choice("Talk to club members", "You stop and talk to "
-                + this.numberOfPeople + " club members.", this.numberOfPeople,
-                distanceReduction);
 
         this.choices.set(0, talk);
     }
