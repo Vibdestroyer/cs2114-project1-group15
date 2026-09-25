@@ -34,7 +34,7 @@ public class Restaurant extends Encounter {
         String resultText = "You grab your food and continue rushing to class.";
 
         Choice getFood = new Choice("Get food from restaurant", resultText,
-            timeChange, distanceChange);
+                timeChange, distanceChange);
 
         this.choices.add(getFood);
     }

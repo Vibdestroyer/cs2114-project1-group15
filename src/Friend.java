@@ -31,15 +31,15 @@ public class Friend extends Person {
 
         // choice to talk to friend
         Choice talk = new Choice("Talk to your friend " + getName(),
-            "You stop and talk to your friend " + getName() + ".", 5, 0);
+                "You stop and talk to your friend " + getName() + ".", 5, 0);
 
         this.choices.set(0, talk);
 
         // snack option if friend has food
         if (this.haveFood) {
             Choice food = new Choice("Take a snack from " + getName(),
-                "Your friend gives you a snack which gives you an energy boost.",
-                5, 5);
+                    "Your friend gives you a snack which gives you an energy boost.",
+                    5, 5);
 
             this.choices.add(food);
         }
@@ -47,8 +47,8 @@ public class Friend extends Person {
         // ride option if friend has a car
         if (this.haveCar) {
             Choice car = new Choice("Get a ride to class",
-                "Your friend drives you and drops you off outside your class building",
-                5, 10);
+                    "Your friend drives you and drops you off outside your class building",
+                    5, 10);
 
             this.choices.add(car);
         }

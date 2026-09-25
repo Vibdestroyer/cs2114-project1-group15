@@ -35,8 +35,8 @@ public class User {
 
         // Create choice that is always available
         baseChoice = new Choice("Just keep walking",
-            "You kept walking. Nothing interesting happened, but you are closer to class",
-            4, 2);
+                "You kept walking. Nothing interesting happened, but you are closer to class",
+                4, 2);
 
         // Initalize choices list and add the most basic choice
         choices = new ArrayList<>();
@@ -74,20 +74,20 @@ public class User {
                     choices.add(fChoices.get(i));
                 }
             }
-            // if (random.nextBoolean()) {
-            // Freshman f = new Freshman();
-            // List<Choice> fChoices = f.getChoices();
-            // for (int i = 0; i < fChoices.size(); i++) {
-            // choices.add(fChoices.get(i));
-            // }
-            // }
-            // if (random.nextBoolean()) {
-            // Club c = new Club();
-            // List<Choice> cChoices = c.getChoices();
-            // for (int i = 0; i < cChoices.size(); i++) {
-            // choices.add(cChoices.get(i));
-            // }
-            // }
+            if (random.nextBoolean()) {
+                Freshman f = new Freshman();
+                List<Choice> fChoices = f.getChoices();
+                for (int i = 0; i < fChoices.size(); i++) {
+                    choices.add(fChoices.get(i));
+                }
+            }
+            if (random.nextBoolean()) {
+                Club c = new Club();
+                List<Choice> cChoices = c.getChoices();
+                for (int i = 0; i < cChoices.size(); i++) {
+                    choices.add(cChoices.get(i));
+                }
+            }
             if (random.nextBoolean()) {
                 Bus b = new Bus();
                 List<Choice> bChoices = b.getChoices();
@@ -113,29 +113,24 @@ public class User {
 
         if (timeRemaining < 0) {
             System.out.println(
-                "You ran out of time. You are going to be late to class.");
-        }
-        else if (timeRemaining == 0) {
+                    "You ran out of time. You are going to be late to class.");
+        } else if (timeRemaining == 0) {
             if (distanceToClass < 0) {
                 System.out.println(
-                    "You made it to class with time to spare. Amazing job!");
-            }
-            else if (distanceToClass == 0) {
+                        "You made it to class with time to spare. Amazing job!");
+            } else if (distanceToClass == 0) {
                 System.out.println(
-                    "You made it to class exactly on time. Impressive!");
-            }
-            else {
+                        "You made it to class exactly on time. Impressive!");
+            } else {
                 System.out.println(
-                    "You ran out of time. You are going to be late to class.");
+                        "You ran out of time. You are going to be late to class.");
             }
-        }
-        else {
+        } else {
             System.out.println(
-                "You made it to class with time to spare. Amazing job!");
+                    "You made it to class with time to spare. Amazing job!");
         }
 
     }
-
 
     // ----------------------------------------------------------
     /**
@@ -150,7 +145,6 @@ public class User {
         return false;
     }
 
-
     // ----------------------------------------------------------
     /**
      * Outputs the options available to the user.
@@ -159,10 +153,9 @@ public class User {
         System.out.println("What would you like to do?");
         for (int i = 0; i < choices.size(); i++) {
             System.out.println(menuLetters.get(i) + ") " + choices.get(i)
-                .getMenuText());
+                    .getMenuText());
         }
     }
-
 
     // ----------------------------------------------------------
     /**
@@ -181,23 +174,20 @@ public class User {
 
             if (input == null) {
                 System.out.println(
-                    "It does not look like you made a choice. Make sure to enter a letter choice from the menu.");
-            }
-            else {
+                        "It does not look like you made a choice. Make sure to enter a letter choice from the menu.");
+            } else {
                 char[] inputArray = input.toCharArray();
                 if (inputArray.length > 1) {
                     System.out.println(
-                        "It looks like you entered more than one character. Please enter a single letter choice from the menu.");
-                }
-                else {
+                            "It looks like you entered more than one character. Please enter a single letter choice from the menu.");
+                } else {
                     char inputChar = Character.toUpperCase(inputArray[0]);
-                    if ((int)inputChar - 65 < 0 || (int)inputChar
-                        - 65 >= choices.size()) {
+                    if ((int) inputChar - 65 < 0 || (int) inputChar
+                            - 65 >= choices.size()) {
                         System.out.println(
-                            "It looks like you entered a choice that was not available in the menu. Please enter a single letter choice that is avaible in the menu.");
-                    }
-                    else {
-                        choiceIndex = (int)inputChar - 65;
+                                "It looks like you entered a choice that was not available in the menu. Please enter a single letter choice that is avaible in the menu.");
+                    } else {
+                        choiceIndex = (int) inputChar - 65;
                         madeChoice = true;
                     }
                 }
@@ -206,14 +196,13 @@ public class User {
         return choices.get(choiceIndex);
     }
 
-
     // ----------------------------------------------------------
     /**
      * Updates values depending on the user's choice and prints
      * story updates.
      * 
      * @param choice
-     *            The choice object the user selected.
+     *               The choice object the user selected.
      */
     public void takeAction(Choice choice) {
         System.out.println("\n" + choice.getResultText() + "\n");
@@ -221,7 +210,6 @@ public class User {
         distanceToClass -= choice.getDistanceReduction();
 
     }
-
 
     // ----------------------------------------------------------
     /**

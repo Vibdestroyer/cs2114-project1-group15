@@ -33,8 +33,8 @@ public class Club extends Person {
         }
         // replace default person conversation choice
         Choice talk = new Choice("Talk to club members", "You stop and talk to "
-            + this.numberOfPeople + " club members.", -this.numberOfPeople,
-            distanceReduction);
+                + this.numberOfPeople + " club members.", this.numberOfPeople,
+                distanceReduction);
 
         this.choices.set(0, talk);
     }
